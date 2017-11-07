@@ -1,0 +1,6 @@
+framework module Pods_sRealm {
+  umbrella header "Pods-sRealm-umbrella.h"
+
+  export *
+  module * { export * }
+}
