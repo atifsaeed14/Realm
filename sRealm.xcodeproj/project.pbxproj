@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C36AA4B51FB1C4990048F79F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AA4B41FB1C4990048F79F /* AppDelegate.swift */; };
-		C36AA4B71FB1C4990048F79F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AA4B61FB1C4990048F79F /* ViewController.swift */; };
-		C36AA4BA1FB1C4990048F79F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4B81FB1C4990048F79F /* Main.storyboard */; };
 		C36AA4BC1FB1C4990048F79F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4BB1FB1C4990048F79F /* Assets.xcassets */; };
 		C36AA4BF1FB1C4990048F79F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4BD1FB1C4990048F79F /* LaunchScreen.storyboard */; };
 		C36AA4CA1FB1C49A0048F79F /* sRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AA4C91FB1C49A0048F79F /* sRealmTests.swift */; };
 		C36AA4D51FB1C49A0048F79F /* sRealmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AA4D41FB1C49A0048F79F /* sRealmUITests.swift */; };
+		C36AA4EB1FB1C51E0048F79F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AA4E31FB1C51E0048F79F /* AppDelegate.swift */; };
+		C36AA4EC1FB1C51E0048F79F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AA4E31FB1C51E0048F79F /* AppDelegate.swift */; };
+		C36AA4ED1FB1C51E0048F79F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AA4E31FB1C51E0048F79F /* AppDelegate.swift */; };
+		C36AA4EE1FB1C51E0048F79F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4E71FB1C51E0048F79F /* Info.plist */; };
+		C36AA4EF1FB1C51E0048F79F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4E71FB1C51E0048F79F /* Info.plist */; };
+		C36AA4F01FB1C51E0048F79F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4E71FB1C51E0048F79F /* Info.plist */; };
+		C36AA4F11FB1C51E0048F79F /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4E81FB1C51E0048F79F /* ReadMe.txt */; };
+		C36AA4F21FB1C51E0048F79F /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4E81FB1C51E0048F79F /* ReadMe.txt */; };
+		C36AA4F31FB1C51E0048F79F /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4E81FB1C51E0048F79F /* ReadMe.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,18 +41,17 @@
 
 /* Begin PBXFileReference section */
 		C36AA4B11FB1C4990048F79F /* sRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C36AA4B41FB1C4990048F79F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C36AA4B61FB1C4990048F79F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C36AA4B91FB1C4990048F79F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C36AA4BB1FB1C4990048F79F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C36AA4BE1FB1C4990048F79F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C36AA4C01FB1C4990048F79F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C36AA4C51FB1C49A0048F79F /* sRealmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sRealmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36AA4C91FB1C49A0048F79F /* sRealmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sRealmTests.swift; sourceTree = "<group>"; };
 		C36AA4CB1FB1C49A0048F79F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C36AA4D01FB1C49A0048F79F /* sRealmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sRealmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36AA4D41FB1C49A0048F79F /* sRealmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sRealmUITests.swift; sourceTree = "<group>"; };
 		C36AA4D61FB1C49A0048F79F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36AA4E31FB1C51E0048F79F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C36AA4E71FB1C51E0048F79F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36AA4E81FB1C51E0048F79F /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +102,14 @@
 		C36AA4B31FB1C4990048F79F /* sRealm */ = {
 			isa = PBXGroup;
 			children = (
-				C36AA4B41FB1C4990048F79F /* AppDelegate.swift */,
-				C36AA4B61FB1C4990048F79F /* ViewController.swift */,
-				C36AA4B81FB1C4990048F79F /* Main.storyboard */,
+				C36AA4E21FB1C51E0048F79F /* AppDelegate */,
+				C36AA4E41FB1C51E0048F79F /* Extensions */,
+				C36AA4E51FB1C51E0048F79F /* Models */,
+				C36AA4E61FB1C51E0048F79F /* SupportingFile */,
+				C36AA4E91FB1C51E0048F79F /* ThirdParty */,
+				C36AA4EA1FB1C51E0048F79F /* Controllers */,
 				C36AA4BB1FB1C4990048F79F /* Assets.xcassets */,
 				C36AA4BD1FB1C4990048F79F /* LaunchScreen.storyboard */,
-				C36AA4C01FB1C4990048F79F /* Info.plist */,
 			);
 			path = sRealm;
 			sourceTree = "<group>";
@@ -123,6 +130,51 @@
 				C36AA4D61FB1C49A0048F79F /* Info.plist */,
 			);
 			path = sRealmUITests;
+			sourceTree = "<group>";
+		};
+		C36AA4E21FB1C51E0048F79F /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C36AA4E31FB1C51E0048F79F /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C36AA4E41FB1C51E0048F79F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C36AA4E51FB1C51E0048F79F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C36AA4E61FB1C51E0048F79F /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+				C36AA4E71FB1C51E0048F79F /* Info.plist */,
+				C36AA4E81FB1C51E0048F79F /* ReadMe.txt */,
+			);
+			path = SupportingFile;
+			sourceTree = "<group>";
+		};
+		C36AA4E91FB1C51E0048F79F /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		C36AA4EA1FB1C51E0048F79F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +245,7 @@
 				TargetAttributes = {
 					C36AA4B01FB1C4990048F79F = {
 						CreatedOnToolsVersion = 8.3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					C36AA4C41FB1C49A0048F79F = {
 						CreatedOnToolsVersion = 8.3;
@@ -234,7 +286,8 @@
 			files = (
 				C36AA4BF1FB1C4990048F79F /* LaunchScreen.storyboard in Resources */,
 				C36AA4BC1FB1C4990048F79F /* Assets.xcassets in Resources */,
-				C36AA4BA1FB1C4990048F79F /* Main.storyboard in Resources */,
+				C36AA4F11FB1C51E0048F79F /* ReadMe.txt in Resources */,
+				C36AA4EE1FB1C51E0048F79F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +295,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36AA4F21FB1C51E0048F79F /* ReadMe.txt in Resources */,
+				C36AA4EF1FB1C51E0048F79F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36AA4F31FB1C51E0048F79F /* ReadMe.txt in Resources */,
+				C36AA4F01FB1C51E0048F79F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C36AA4B71FB1C4990048F79F /* ViewController.swift in Sources */,
-				C36AA4B51FB1C4990048F79F /* AppDelegate.swift in Sources */,
+				C36AA4EB1FB1C51E0048F79F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36AA4EC1FB1C51E0048F79F /* AppDelegate.swift in Sources */,
 				C36AA4CA1FB1C49A0048F79F /* sRealmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36AA4ED1FB1C51E0048F79F /* AppDelegate.swift in Sources */,
 				C36AA4D51FB1C49A0048F79F /* sRealmUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,14 +354,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C36AA4B81FB1C4990048F79F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C36AA4B91FB1C4990048F79F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C36AA4BD1FB1C4990048F79F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -356,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -401,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -414,10 +464,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = sRealm/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/sRealm/SupportingFile/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = atifsaeed.com.sRealm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -426,10 +478,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = sRealm/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/sRealm/SupportingFile/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = atifsaeed.com.sRealm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
