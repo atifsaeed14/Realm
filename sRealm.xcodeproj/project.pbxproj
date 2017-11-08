@@ -10,6 +10,12 @@
 		2F1B5B5BDC6180F7EB30D12F /* Pods_sRealmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0411CC94215F73809172086E /* Pods_sRealmUITests.framework */; };
 		896EEE33C2CFA5AA2EE6A157 /* Pods_sRealmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A023E914623799B11D5C1F79 /* Pods_sRealmTests.framework */; };
 		BF83D4842339D034D51747FE /* Pods_sRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BC4C27FF3F948EDFA50B7E /* Pods_sRealm.framework */; };
+		C35EE1B61FB2DD6700773ACA /* TaskTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EE1B41FB2DD6700773ACA /* TaskTableCell.swift */; };
+		C35EE1B71FB2DD6700773ACA /* TaskTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EE1B41FB2DD6700773ACA /* TaskTableCell.swift */; };
+		C35EE1B81FB2DD6700773ACA /* TaskTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EE1B41FB2DD6700773ACA /* TaskTableCell.swift */; };
+		C35EE1B91FB2DD6700773ACA /* TaskTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35EE1B51FB2DD6700773ACA /* TaskTableCell.xib */; };
+		C35EE1BA1FB2DD6700773ACA /* TaskTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35EE1B51FB2DD6700773ACA /* TaskTableCell.xib */; };
+		C35EE1BB1FB2DD6700773ACA /* TaskTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35EE1B51FB2DD6700773ACA /* TaskTableCell.xib */; };
 		C36AA4BC1FB1C4990048F79F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4BB1FB1C4990048F79F /* Assets.xcassets */; };
 		C36AA4BF1FB1C4990048F79F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36AA4BD1FB1C4990048F79F /* LaunchScreen.storyboard */; };
 		C36AA4CA1FB1C49A0048F79F /* sRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AA4C91FB1C49A0048F79F /* sRealmTests.swift */; };
@@ -67,6 +73,8 @@
 		A023E914623799B11D5C1F79 /* Pods_sRealmTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sRealmTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B592EAA7E9AE84426C740CF8 /* Pods-sRealmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sRealmTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sRealmTests/Pods-sRealmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B61A8876DDAC679767F251F3 /* Pods-sRealm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sRealm.release.xcconfig"; path = "Pods/Target Support Files/Pods-sRealm/Pods-sRealm.release.xcconfig"; sourceTree = "<group>"; };
+		C35EE1B41FB2DD6700773ACA /* TaskTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableCell.swift; sourceTree = "<group>"; };
+		C35EE1B51FB2DD6700773ACA /* TaskTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskTableCell.xib; sourceTree = "<group>"; };
 		C36AA4B11FB1C4990048F79F /* sRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36AA4BB1FB1C4990048F79F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C36AA4BE1FB1C4990048F79F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -141,6 +149,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C35EE1B31FB2D85B00773ACA /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				C35EE1B41FB2DD6700773ACA /* TaskTableCell.swift */,
+				C35EE1B51FB2DD6700773ACA /* TaskTableCell.xib */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
 		C36AA4A81FB1C4990048F79F = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +185,7 @@
 			children = (
 				C36AA4E21FB1C51E0048F79F /* AppDelegate */,
 				C36AA4EA1FB1C51E0048F79F /* Controllers */,
+				C35EE1B31FB2D85B00773ACA /* TableCells */,
 				C36AA4E51FB1C51E0048F79F /* Models */,
 				C36AA4E41FB1C51E0048F79F /* Extensions */,
 				C36AA4E91FB1C51E0048F79F /* ThirdParty */,
@@ -239,10 +257,10 @@
 		C36AA4EA1FB1C51E0048F79F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C380B1F51FB1E6B400ECDF67 /* TodoAddViewController.swift */,
-				C380B1F61FB1E6B400ECDF67 /* TodoAddViewController.xib */,
 				C36AA4F81FB1C8D20048F79F /* TodoListViewController.swift */,
 				C36AA4F91FB1C8D20048F79F /* TodoListViewController.xib */,
+				C380B1F51FB1E6B400ECDF67 /* TodoAddViewController.swift */,
+				C380B1F61FB1E6B400ECDF67 /* TodoAddViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -366,6 +384,7 @@
 				C380B1FA1FB1E6B400ECDF67 /* TodoAddViewController.xib in Resources */,
 				C36AA4BF1FB1C4990048F79F /* LaunchScreen.storyboard in Resources */,
 				C36AA4FD1FB1C8D20048F79F /* TodoListViewController.xib in Resources */,
+				C35EE1B91FB2DD6700773ACA /* TaskTableCell.xib in Resources */,
 				C36AA4BC1FB1C4990048F79F /* Assets.xcassets in Resources */,
 				C36AA4F11FB1C51E0048F79F /* ReadMe.txt in Resources */,
 				C36AA4EE1FB1C51E0048F79F /* Info.plist in Resources */,
@@ -376,6 +395,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C35EE1BA1FB2DD6700773ACA /* TaskTableCell.xib in Resources */,
 				C380B1FB1FB1E6B400ECDF67 /* TodoAddViewController.xib in Resources */,
 				C36AA4FE1FB1C8D20048F79F /* TodoListViewController.xib in Resources */,
 				C36AA4F21FB1C51E0048F79F /* ReadMe.txt in Resources */,
@@ -387,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C35EE1BB1FB2DD6700773ACA /* TaskTableCell.xib in Resources */,
 				C380B1FC1FB1E6B400ECDF67 /* TodoAddViewController.xib in Resources */,
 				C36AA4FF1FB1C8D20048F79F /* TodoListViewController.xib in Resources */,
 				C36AA4F31FB1C51E0048F79F /* ReadMe.txt in Resources */,
@@ -556,6 +577,7 @@
 				C380B1F71FB1E6B400ECDF67 /* TodoAddViewController.swift in Sources */,
 				C36AA4FA1FB1C8D20048F79F /* TodoListViewController.swift in Sources */,
 				C36AA4F51FB1C84A0048F79F /* TodoItem.swift in Sources */,
+				C35EE1B61FB2DD6700773ACA /* TaskTableCell.swift in Sources */,
 				C380B1FE1FB1EC5500ECDF67 /* UIViewController+Extension.swift in Sources */,
 				C36AA4EB1FB1C51E0048F79F /* AppDelegate.swift in Sources */,
 			);
@@ -568,6 +590,7 @@
 				C380B1FF1FB1EC5500ECDF67 /* UIViewController+Extension.swift in Sources */,
 				C36AA4FB1FB1C8D20048F79F /* TodoListViewController.swift in Sources */,
 				C36AA4EC1FB1C51E0048F79F /* AppDelegate.swift in Sources */,
+				C35EE1B71FB2DD6700773ACA /* TaskTableCell.swift in Sources */,
 				C380B1F81FB1E6B400ECDF67 /* TodoAddViewController.swift in Sources */,
 				C36AA4F61FB1C84A0048F79F /* TodoItem.swift in Sources */,
 				C36AA4CA1FB1C49A0048F79F /* sRealmTests.swift in Sources */,
@@ -581,6 +604,7 @@
 				C380B2001FB1EC5500ECDF67 /* UIViewController+Extension.swift in Sources */,
 				C36AA4FC1FB1C8D20048F79F /* TodoListViewController.swift in Sources */,
 				C36AA4ED1FB1C51E0048F79F /* AppDelegate.swift in Sources */,
+				C35EE1B81FB2DD6700773ACA /* TaskTableCell.swift in Sources */,
 				C380B1F91FB1E6B400ECDF67 /* TodoAddViewController.swift in Sources */,
 				C36AA4F71FB1C84A0048F79F /* TodoItem.swift in Sources */,
 				C36AA4D51FB1C49A0048F79F /* sRealmUITests.swift in Sources */,
