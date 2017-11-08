@@ -13,9 +13,11 @@ class TodoListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    var sortKey: String = "date"
+
     let realm = try! Realm()
-    var results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: "date")
+    var results = try! Realm().objects(TodoItem.self)
     var notificationToken: NotificationToken?
     
     override func viewDidLoad() {
@@ -25,7 +27,8 @@ class TodoListViewController: UIViewController {
         
         self.title = "Todo"
         self.edgesForExtendedLayout = UIRectEdge()
-        
+        results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: sortKey)
+
         //add()
         setupUI()
         
@@ -38,11 +41,12 @@ class TodoListViewController: UIViewController {
                 
             case .update(_, let deletions, let insertions, let modifications):
                 // Query results have changed, so apply them to the TableView
-                self.tableView.beginUpdates()
+                /*self.tableView.beginUpdates()
                 self.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
                 self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
                 self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-                self.tableView.endUpdates()
+                self.tableView.endUpdates()*/
+                self.tableView.reloadData()
                 
             case .error(let err):
                 // An error occurred while opening the Realm file on the background worker thread
@@ -58,6 +62,28 @@ class TodoListViewController: UIViewController {
     
     // MARK: - Helping method
     
+    @IBAction func didSelectSortCriteria(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            sortKey = "date"
+        } else if sender.selectedSegmentIndex == 1 {
+            sortKey = "task"
+        } else {
+            sortKey = "priority"
+            // A-Z
+            //self.lists = self.lists.sorted(byProperty: "name")
+            // date
+            //self.lists = self.lists.sorted(byProperty: "createdAt", ascending:false)
+        }
+        
+        if (searchBar.text?.isEmpty)! {
+            results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: sortKey)
+        } else {
+            let predicate = NSPredicate(format: "task contains %@", searchBar.text!)
+            results = try! Realm().objects(TodoItem.self).filter(predicate).sorted(byKeyPath: sortKey)
+        }
+        self.tableView.reloadData()
+    }
+    
     func setupUI() {
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItems = [add]
@@ -71,7 +97,6 @@ class TodoListViewController: UIViewController {
     }
     
     func addTapped(sender: Any) {
-        
         let alertController = TodoAddViewController(nibName: "TodoAddViewController", bundle: nil)
         
         alertController.modalTransitionStyle = .crossDissolve
@@ -100,10 +125,8 @@ class TodoListViewController: UIViewController {
             viewController.present(alertController, animated: false, completion: {
                 alertController.startAnimated(type: animationType)
                 alertController.todoItem = object
-                //alertController.textView.text = object.task
             })
         }
-        
     }
     
     func deleteTapped(sender: UIButton) {
@@ -188,9 +211,9 @@ extension TodoListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let predicate = NSPredicate(format: "task contains %@", searchText)
         if searchText.isEmpty {
-            results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: "date")
+            results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: sortKey)
         } else {
-            results = try! Realm().objects(TodoItem.self).filter(predicate)
+            results = try! Realm().objects(TodoItem.self).filter(predicate).sorted(byKeyPath: sortKey)
         }
         tableView.reloadData()
     }
@@ -209,7 +232,7 @@ extension TodoListViewController: UISearchBarDelegate {
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: "date")
+        results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: sortKey)
         tableView.reloadData()
     }
 }

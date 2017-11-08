@@ -18,14 +18,15 @@ enum AlertAnimationType {
 }
 
 class TodoAddViewController: UIViewController, UITextViewDelegate {
-
+    
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var todoItem: TodoItem? = nil
-
+    
     let backgroundColor: UIColor = .black
     let backgroundOpacity: CGFloat = 0.5
     let animateDuration: TimeInterval = 1.0
@@ -36,26 +37,34 @@ class TodoAddViewController: UIViewController, UITextViewDelegate {
     
     private var okHandler: ActionHandler?
     private var cancelHandler: ActionHandler?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
-        self.textView.text = self.todoItem?.task
+        if todoItem != nil {
+            self.textView.text = self.todoItem?.task
+            self.segmentedControl.selectedSegmentIndex = (self.todoItem?.priority)!
+        }
+        
         alertView.alpha = 0
         alertView.layer.cornerRadius = 4
         view.backgroundColor = backgroundColor.withAlphaComponent(backgroundOpacity)
         okButton.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     // MARK:- Helping methods
+    
+    @IBAction func didSelectPriority(_ sender: UISegmentedControl) {
+        segmentedControl.selectedSegmentIndex = sender.selectedSegmentIndex
+    }
     
     func startAnimated(type: AlertAnimationType){
         
@@ -82,17 +91,13 @@ class TodoAddViewController: UIViewController, UITextViewDelegate {
     }
     
     func closeTapped() {
-        dismiss(animated: true, completion: {
-           // if let posHandler = self.posHandler{
-           //     posHandler()
-           // }
-        })
+        dismiss(animated: true, completion:nil)
     }
     
     func okTapped() {
         
         if textView.text.characters.count == 0 {
-            let alertView = UIAlertController(title:"Error", message: "Note cannot canot be empty.", preferredStyle: .alert)
+            let alertView = UIAlertController(title:"Error", message: "Task name can't be empty.", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
                 
             })
@@ -102,19 +107,19 @@ class TodoAddViewController: UIViewController, UITextViewDelegate {
         } else {
             
             if todoItem != nil {
-                todoItem?.update(taskName: textView.text)
+                todoItem?.update(task: textView.text, priority: segmentedControl.selectedSegmentIndex)
             } else {
                 todoItem = TodoItem()
                 todoItem?.task = textView.text
+                todoItem?.priority = segmentedControl.selectedSegmentIndex
                 todoItem?.save()
             }
             
-            dismiss(animated: true, completion: {
-            })
+            dismiss(animated: true, completion:nil)
         }
         
     }
-
+    
     // MARK:- UITextView methods
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

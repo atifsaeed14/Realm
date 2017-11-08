@@ -13,6 +13,7 @@ class TodoItem: Object {
     
     dynamic var task: String? = nil
     dynamic var date: Date = Date()
+    dynamic var priority: Int = 1
     dynamic var isCompleted: Bool = false
     dynamic var isExpend: Bool = false
     
@@ -27,11 +28,12 @@ class TodoItem: Object {
         }
     }
     
-    func update(taskName: String) {
+    func update(task: String, priority: Int) {
         do {
             let realm = try Realm()
             try realm.write {
-                self.task = taskName
+                self.task = task
+                self.priority = priority
             }
         } catch let error as NSError {
             fatalError(error.localizedDescription)

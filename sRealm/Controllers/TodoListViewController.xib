@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TodoListViewController" customModule="sRealm" customModuleProvider="target">
             <connections>
                 <outlet property="searchBar" destination="bZV-x4-qa7" id="ypd-Wu-Btw"/>
+                <outlet property="segmentedControl" destination="aap-dS-kt0" id="H9U-io-7Lv"/>
                 <outlet property="tableView" destination="Yps-zD-2Jy" id="Qog-II-pvy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,8 +32,28 @@
                         <outlet property="delegate" destination="-1" id="osD-9O-hv3"/>
                     </connections>
                 </searchBar>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aap-dS-kt0">
+                    <rect key="frame" x="0.0" y="44" width="320" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="x7T-lC-Ba4"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Date"/>
+                        <segment title="Name"/>
+                        <segment title="Priority"/>
+                    </segments>
+                    <connections>
+                        <action selector="didSelectSortCriteria:" destination="-1" eventType="valueChanged" id="leh-wt-sli"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0r-Ew-4yU">
+                    <rect key="frame" x="119" y="230" width="82.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yps-zD-2Jy">
-                    <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                    <rect key="frame" x="0.0" y="74" width="320" height="406"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="3bH-b9-bXf"/>
@@ -42,10 +63,15 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="aap-dS-kt0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2aV-mv-Qe9"/>
                 <constraint firstAttribute="trailing" secondItem="Yps-zD-2Jy" secondAttribute="trailing" id="CWl-Nl-kMc"/>
+                <constraint firstItem="B0r-Ew-4yU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="PnF-NC-WGt"/>
+                <constraint firstAttribute="trailing" secondItem="aap-dS-kt0" secondAttribute="trailing" id="X4X-eW-Lvf"/>
+                <constraint firstItem="B0r-Ew-4yU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Y70-0U-gOC"/>
+                <constraint firstItem="Yps-zD-2Jy" firstAttribute="top" secondItem="aap-dS-kt0" secondAttribute="bottom" constant="1" id="aEs-ez-1AP"/>
                 <constraint firstItem="Yps-zD-2Jy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cKH-5Z-f2P"/>
-                <constraint firstItem="Yps-zD-2Jy" firstAttribute="top" secondItem="bZV-x4-qa7" secondAttribute="bottom" id="cgr-xu-3GO"/>
                 <constraint firstAttribute="trailing" secondItem="bZV-x4-qa7" secondAttribute="trailing" id="eAL-ya-VM0"/>
+                <constraint firstItem="aap-dS-kt0" firstAttribute="top" secondItem="bZV-x4-qa7" secondAttribute="bottom" id="hSC-fY-Yn4"/>
                 <constraint firstItem="bZV-x4-qa7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oYS-NZ-jRa"/>
                 <constraint firstAttribute="bottom" secondItem="Yps-zD-2Jy" secondAttribute="bottom" id="uKe-P7-edX"/>
                 <constraint firstItem="bZV-x4-qa7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xDr-w2-h6J"/>
