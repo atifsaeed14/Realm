@@ -10,36 +10,47 @@ import UIKit
 import RealmSwift
 
 class TodoListViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
-    //var isExpend: Bool = false
+    @IBOutlet weak var searchBar: UISearchBar!
     
     let realm = try! Realm()
-    let results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: "date")
+    var results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: "date")
     var notificationToken: NotificationToken?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.title = "Todo"
-        tableView.tableFooterView = UIView()
-        tableView.tableHeaderView = UIView()
-        //self.automaticallyAdjustsScrollViewInsets = false
-        //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        tableView.keyboardDismissMode = .onDrag
         self.edgesForExtendedLayout = UIRectEdge()
         
-//        self.edgesForExtendedLayout = UIRectEdge.None
-        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItems = [add]
+        //add()
+        setupUI()
         
-        tableView.estimatedRowHeight = 65.0
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.register(UINib(nibName: "TaskTableCell", bundle: nil), forCellReuseIdentifier: "TaskTableCell")
+        // Set results notification block
+        self.notificationToken = results.observe { (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial:
+                // Results are now populated and can be accessed without blocking the UI
+                self.tableView.reloadData()
+                
+            case .update(_, let deletions, let insertions, let modifications):
+                // Query results have changed, so apply them to the TableView
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                self.tableView.endUpdates()
+                
+            case .error(let err):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(err)")
+            }
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,7 +58,19 @@ class TodoListViewController: UIViewController {
     
     // MARK: - Helping method
     
-    func addTapped(_ sender: Any) {
+    func setupUI() {
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItems = [add]
+        
+        tableView.estimatedRowHeight = 65.0
+        tableView.tableFooterView = UIView()
+        tableView.tableHeaderView = UIView()
+        tableView.keyboardDismissMode = .onDrag
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.register(UINib(nibName: "TaskTableCell", bundle: nil), forCellReuseIdentifier: "TaskTableCell")
+    }
+    
+    func addTapped(sender: Any) {
         
         let alertController = TodoAddViewController(nibName: "TodoAddViewController", bundle: nil)
         
@@ -60,24 +83,58 @@ class TodoListViewController: UIViewController {
         if let viewController = alertController.getCurrentVC() {
             viewController.present(alertController, animated: false, completion: {
                 alertController.startAnimated(type: animationType)
-                //alertController.titleLabel.text = title
-                //alertController.messageLabel.text = message
+            })
+        }
+    }
+    
+    func editTapped(sender: UIButton) {
+        let object:TodoItem = results[sender.tag]
+        let alertController = TodoAddViewController(nibName: "TodoAddViewController", bundle: nil)
+        
+        alertController.modalTransitionStyle = .crossDissolve
+        alertController.modalPresentationStyle = .overCurrentContext
+        
+        let animationType: AlertAnimationType = .scale
+        
+        if let viewController = alertController.getCurrentVC() {
+            viewController.present(alertController, animated: false, completion: {
+                alertController.startAnimated(type: animationType)
+                alertController.todoItem = object
+                //alertController.textView.text = object.task
             })
         }
         
     }
-
-    /*func showDetailTapped(sender: UIButton) {
-        if (isExpend) {
-            isExpend = false
+    
+    func deleteTapped(sender: UIButton) {
+        let object:TodoItem = results[sender.tag]
+        object.delete()
+    }
+    
+    func detailTapped(sender: UIButton) {
+        let object: TodoItem = results[sender.tag]
+        if (object.isExpend) {
+            object.update(value: false)
         } else {
-            isExpend = true
+            object.update(value: true)
         }
-        
-        tableView.beginUpdates()
-        let indexPath = IndexPath(item: sender.tag, section: 0)
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
+    }
+    
+    // Random add for testing purpose
+    
+    /*func add() {
+        realm.beginWrite()
+        //realm.create(TodoItem.self, value: [TodoListViewController.randomString(), TodoListViewController.randomDate()])
+        realm.create(TodoItem.self, value: ["task": TodoListViewController.randomString(), "date": TodoListViewController.randomDate()])
+        try! realm.commitWrite()
+    }
+    
+    class func randomString() -> String {
+        return "Title \(arc4random())"
+    }
+    
+    class func randomDate() -> NSDate {
+        return NSDate(timeIntervalSince1970: TimeInterval(arc4random()))
     }*/
     
 }
@@ -91,28 +148,68 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableCell", for: indexPath) as! TaskTableCell
         
-        cell.taskLabel.text = "Title What you have to do is to save the index of the selected Cell in didSelectRow method. and also have to begin/end updates on table view. This will reload some part of tableview. and will call heightForRow method. In that method you can check that if your row is selected one then return expandedHeight, otherwise return the normal height ????"
-        cell.taskLabel.numberOfLines = 0
+        let object = results[indexPath.row]
+        cell.taskLabel.text = object.task
+        cell.dateLabel.text = object.date.toString(dateFormat: "dd MMM HH:mm")
         
-        /*if (isExpend) {
+        if (object.isExpend) {
             cell.taskLabel.numberOfLines = 0
+            cell.detailButton .setTitle("Hide", for: .normal)
         } else {
             cell.taskLabel.numberOfLines = 1
+            cell.detailButton .setTitle("Detail", for: .normal)
         }
         
         cell.detailButton.tag = indexPath.row
+        cell.detailButton.addTarget(self, action: #selector(detailTapped(sender:)), for: .touchUpInside)
         
-        cell.detailButton.addTarget(self, action: #selector(showDetailTapped(sender:)), for: .touchUpInside)*/
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self, action: #selector(deleteTapped(sender:)), for: .touchUpInside)
+        
+        cell.editButton.tag = indexPath.row
+        cell.editButton.addTarget(self, action: #selector(editTapped(sender:)), for: .touchUpInside)
         
         return cell
-}
+    }
     
 }
 
+// MARK:- UISearchBarDelegate
+
+extension TodoListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let predicate = NSPredicate(format: "task contains %@", searchText)
+        if searchText.isEmpty {
+            results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: "date")
+        } else {
+            results = try! Realm().objects(TodoItem.self).filter(predicate)
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        /*if !(searchBar.text?.isEmpty)! {
+         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+         }*/
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        results = try! Realm().objects(TodoItem.self).sorted(byKeyPath: "date")
+        tableView.reloadData()
+    }
+}

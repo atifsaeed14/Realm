@@ -2,8 +2,20 @@ Project Realm
 
 DESCRIPTION
 ------------------------------
-
 This sample Realm project demonstrates different capabilities of iOS SDK.
+
+
+BUILD REQUIREMENTS
+------------------------------
+xCODE 8.3
+iOS 10.0 SDK or later
+
+
+HELPING LINK
+------------------------------
+https://realm.io/docs/swift/latest/
+https://github.com/skipadu/RealmAndCharts-example
+
 
 
 /*
@@ -22,24 +34,6 @@ alertController.addAction(okAction)
 self.present(alertController, animated: true, completion: nil)
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Copyright (c) 2017 Atif Saeed. All rights reserved.

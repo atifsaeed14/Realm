@@ -17,12 +17,14 @@ enum AlertAnimationType {
     case bounceDown
 }
 
-class TodoAddViewController: UIViewController {
+class TodoAddViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var textView: UITextView!
+    
+    var todoItem: TodoItem? = nil
 
     let backgroundColor: UIColor = .black
     let backgroundOpacity: CGFloat = 0.5
@@ -40,12 +42,12 @@ class TodoAddViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        self.textView.text = self.todoItem?.task
         alertView.alpha = 0
         alertView.layer.cornerRadius = 4
         view.backgroundColor = backgroundColor.withAlphaComponent(backgroundOpacity)
         okButton.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,22 +101,26 @@ class TodoAddViewController: UIViewController {
             
         } else {
             
+            if todoItem != nil {
+                todoItem?.update(taskName: textView.text)
+            } else {
+                todoItem = TodoItem()
+                todoItem?.task = textView.text
+                todoItem?.save()
+            }
+            
             dismiss(animated: true, completion: {
-                // if let posHandler = self.posHandler{
-                //     posHandler()
-                // }
             })
         }
         
     }
 
+    // MARK:- UITextView methods
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if textView.text.characters.count <= 140 {
-            // Code here
-        } else {
-            //Code Here
-        }
-        return true
+        let newText = (self.textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.characters.count
+        return numberOfChars < 100
     }
     
 }
